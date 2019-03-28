@@ -1,0 +1,7 @@
+export const CHANGE_LIMIT = "CHANGE_LIMIT";
+export const CHANGE_ORDER = "CHANGE_ORDER";
+export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+export const GET_CAT = "GET_CAT";
+export const CHANGE_BREED = "CHANGE_BREED";
+export const CHANGE_PAGE = "CHANGE_PAGE";
+export const GET_TOTAL_CAT_NUMBER = "GET_TOTAL_CAT_NUMBER";
