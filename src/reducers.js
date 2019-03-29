@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import {
   CHANGE_LIMIT,
   CHANGE_CATEGORY,
@@ -5,61 +6,59 @@ import {
   CHANGE_BREED,
   GET_CAT,
   CHANGE_PAGE,
-  GET_TOTAL_CAT_NUMBER
-} from "./constants";
-
-import { combineReducers } from "redux";
+  GET_TOTAL_CAT_NUMBER,
+} from './constants';
 
 let initialState = {
   cats: [],
   limit: 4,
-  order: "RANDOM",
-  category_ids: "",
-  breed_ids: "",
+  order: 'RANDOM',
+  category_ids: '',
+  breed_ids: '',
   page: 0,
-  totalCatNumber: 0
+  totalCatNumber: 0,
 };
 
 const catReducer = (state = initialState, action) => {
-  if (localStorage.getItem("catStore")) {
-    initialState = JSON.parse(localStorage.getItem("catStore"));
+  if (localStorage.getItem('catStore')) {
+    initialState = JSON.parse(localStorage.getItem('catStore'));
   }
 
   switch (action.type) {
     case GET_CAT:
       return {
         ...state,
-        cats: action.payload
+        cats: action.payload,
       };
     case CHANGE_LIMIT:
       return {
         ...state,
-        limit: action.payload
+        limit: action.payload,
       };
     case CHANGE_ORDER:
       return {
         ...state,
-        order: action.payload
+        order: action.payload,
       };
     case CHANGE_CATEGORY:
       return {
         ...state,
-        category_ids: action.payload
+        category_ids: action.payload,
       };
     case CHANGE_BREED:
       return {
         ...state,
-        breed_ids: action.payload
+        breed_ids: action.payload,
       };
     case CHANGE_PAGE:
       return {
         ...state,
-        page: action.payload
+        page: action.payload,
       };
     case GET_TOTAL_CAT_NUMBER:
       return {
         ...state,
-        totalCatNumber: action.payload
+        totalCatNumber: action.payload,
       };
     default:
       return state;

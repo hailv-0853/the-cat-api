@@ -1,21 +1,24 @@
-import { FILTER_DATA } from "../Data/Filter";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-import SelectFilter from "./SelectFilter";
-import FilterOption from "./FilterOption";
+import FILTER_DATA from '../Data/Filter';
 
-import React, { Fragment } from "react";
+import SelectFilter from './SelectFilter';
+import FilterOption from './FilterOption';
 
-import Pagination from "../Containers/Pagination";
+import Pagination from '../Containers/Pagination';
 
 const PresentationalHeader = ({
   order,
   totalPage,
   getFilterHandler,
-  getDefaultValue
+  getDefaultValue,
 }) => (
   <Fragment>
     <h1>My cats library</h1>
-    {FILTER_DATA.map(({ ID, FILTER_NAME, TYPE, OPTIONS }) => (
+    {FILTER_DATA.map(({
+      ID, FILTER_NAME, TYPE, OPTIONS,
+    }) => (
       <SelectFilter
         key={ID}
         id={ID}
@@ -31,10 +34,17 @@ const PresentationalHeader = ({
         ))}
       </SelectFilter>
     ))}
-    {order !== "RANDOM" && (
+    {order !== 'RANDOM' && (
       <Pagination totalPage={totalPage} buttonToDisplay={5} />
     )}
   </Fragment>
 );
+
+PresentationalHeader.propTypes = {
+  order: PropTypes.number.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  getFilterHandler: PropTypes.func.isRequired,
+  getDefaultValue: PropTypes.func.isRequired,
+};
 
 export default PresentationalHeader;

@@ -1,8 +1,8 @@
-import requestHelper from "./requestHelper";
-import errorHandler from "./errorHandler";
+import requestHelper from './requestHelper';
+import errorHandler from './errorHandler';
 
 function request(options) {
-  return requestHelper(options).catch(error => {
+  return requestHelper(options).catch((error) => {
     errorHandler(error.response);
     return Promise.reject(error.response.data);
   });
@@ -10,24 +10,24 @@ function request(options) {
 
 const Request = {
   get(options) {
-    return request({ method: "GET", options });
+    return request({ method: 'GET', options });
   },
 
   post(options) {
-    return request({ method: "POST", options });
+    return request({ method: 'POST', options });
   },
 
   put(options) {
-    return request({ method: "PUT", options });
+    return request({ method: 'PUT', options });
   },
 
   patch(options) {
-    return request({ method: "PATCH", options });
+    return request({ method: 'PATCH', options });
   },
 
   delete(options) {
-    return request({ method: "DELETE", options });
-  }
+    return request({ method: 'DELETE', options });
+  },
 };
 
 export default Request;

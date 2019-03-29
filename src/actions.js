@@ -5,40 +5,40 @@ import {
   CHANGE_BREED,
   GET_CAT,
   CHANGE_PAGE,
-  GET_TOTAL_CAT_NUMBER
-} from "./constants";
+  GET_TOTAL_CAT_NUMBER,
+} from './constants';
 
 export const getCat = payload => ({
   type: GET_CAT,
-  payload
+  payload,
 });
 
 export const changeLimit = payload => ({
   type: CHANGE_LIMIT,
-  payload
+  payload,
 });
 
 export const changeOrder = payload => ({
   type: CHANGE_ORDER,
-  payload
+  payload,
 });
 
 export const changeCategory = payload => ({
   type: CHANGE_CATEGORY,
-  payload
+  payload,
 });
 
 export const changeBreed = payload => ({
   type: CHANGE_BREED,
-  payload
+  payload,
 });
 
 export const changePage = payload => ({
   type: CHANGE_PAGE,
-  payload
+  payload,
 });
 
 export const getTotalCatNumber = payload => ({
   type: GET_TOTAL_CAT_NUMBER,
-  payload
+  payload,
 });

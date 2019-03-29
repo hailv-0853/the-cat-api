@@ -1,16 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
-const BASE_URL = "https://api.thecatapi.com/v1";
+const BASE_URL = 'https://api.thecatapi.com/v1';
 
 const instance = axios.create({
   baseURL: BASE_URL,
-  headers: { "x-api-key": "cd150a09-8706-4b10-aa13-ba50d1219cfc" }
+  headers: { 'x-api-key': 'cd150a09-8706-4b10-aa13-ba50d1219cfc' },
 });
 
 export default function requestHelper({ method, options }) {
-  console.log(options);
   return instance({
     method,
-    ...options
+    ...options,
   }).then(response => Promise.resolve(response));
 }
