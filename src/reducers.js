@@ -7,6 +7,7 @@ import {
   GET_CAT,
   CHANGE_PAGE,
   GET_TOTAL_CAT_NUMBER,
+  GET_ONE_CAT,
 } from './constants';
 
 let initialState = {
@@ -17,6 +18,7 @@ let initialState = {
   breed_ids: '',
   page: 0,
   totalCatNumber: 0,
+  cat: {},
 };
 
 const catReducer = (state = initialState, action) => {
@@ -25,6 +27,11 @@ const catReducer = (state = initialState, action) => {
   }
 
   switch (action.type) {
+    case GET_ONE_CAT:
+      return {
+        ...state,
+        cat: action.payload,
+      };
     case GET_CAT:
       return {
         ...state,

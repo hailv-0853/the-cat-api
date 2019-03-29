@@ -5,3 +5,6 @@ export const GET_CAT = 'GET_CAT';
 export const CHANGE_BREED = 'CHANGE_BREED';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const GET_TOTAL_CAT_NUMBER = 'GET_TOTAL_CAT_NUMBER';
+export const FETCH_CAT = 'FETCH_CAT';
+export const GET_ONE_CAT = 'GET_ONE_CAT';
+export const FETCH_ONE_CAT = 'FETCH_ONE_CAT';

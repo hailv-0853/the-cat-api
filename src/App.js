@@ -9,11 +9,11 @@ import './styles.css';
 import SampleComponent from './Containers/SampleComponent';
 import CatComponent from './Containers/CatComponent';
 import Header from './Containers/Header';
-// import rootSaga from './sagas';
+import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducers);
-// sagaMiddleware.run(rootSaga);
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
 
 const App = () => (
   <Provider store={store}>

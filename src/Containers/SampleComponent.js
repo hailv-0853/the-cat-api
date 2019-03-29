@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import queryString from "query-string";
 
-import { getCatList } from "../CatAPI";
-import { getCat, changePage, getTotalCatNumber } from "../actions";
+import { getCat, changePage, getTotalCatNumber, fetchCat } from "../actions";
 
 import SamplePresentationalComponent from "../Presentations/SampleComponent";
 
@@ -14,7 +13,7 @@ class SampleComponent extends Component {
     this.page =
       parseInt(queryString.parse(this.props.location.search).page) || 1;
     this.props.dispatchChangePage(this.page);
-    this.fetchData(this.page);
+    this.fetchData();
   }
 
   componentDidUpdate(prevProps) {
@@ -27,28 +26,29 @@ class SampleComponent extends Component {
     prevProps.page !== this.props.page && this.fetchData();
   }
 
-  fetchData(page = this.props.page) {
-    let {
+  fetchData = () => {
+    const {
       limit,
       order,
       category_ids,
       dispatchGetCat,
-      dispatchGetTotalCatNumber
+      dispatchGetTotalCatNumber,
+      dispatchFetchCat,
+      page,
     } = this.props;
-    let isLoading = true;
 
-    getCatList({
+    const payload = {
       params: {
         limit: limit,
         order: order,
         category_ids: category_ids,
-        page: page - 1
+        page: page - 1,
       }
-    }).then(result => {
-      dispatchGetTotalCatNumber(parseInt(result.headers["pagination-count"]));
-      dispatchGetCat(result.data);
-      isLoading = false;
-    });
+    };
+
+    let isLoading = true;
+
+    dispatchFetchCat(payload);
   }
 
   render() {
@@ -70,7 +70,8 @@ const mapStateToProps = store => {
 const mapDispatchToProp = dispatch => ({
   dispatchGetCat: payload => dispatch(getCat(payload)),
   dispatchChangePage: payload => dispatch(changePage(payload)),
-  dispatchGetTotalCatNumber: payload => dispatch(getTotalCatNumber(payload))
+  dispatchGetTotalCatNumber: payload => dispatch(getTotalCatNumber(payload)),
+  dispatchFetchCat: payload => dispatch(fetchCat(payload))
 });
 
 export default connect(
