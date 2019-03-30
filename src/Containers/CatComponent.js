@@ -7,7 +7,6 @@ class CatComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cat: this.props.cat,
       isNotFound: false
     };
   }
@@ -29,15 +28,19 @@ class CatComponent extends Component {
     dispatchFetchOneCat(payload);
   }
 
+  componentDidUpdate() {
+  }
+
   showCat = ({ url, categories, id, breeds }) => {
+    const { cat } = this.props;
     if (
-      JSON.stringify(this.state.cat) === JSON.stringify({}) &&
+      JSON.stringify(cat) === JSON.stringify({}) &&
       this.state.isNotFound
     ) {
       return <h2>NOT FOUND</h2>;
     }
 
-    if (JSON.stringify(this.state.cat) !== JSON.stringify({})) {
+    if (JSON.stringify(cat) !== JSON.stringify({})) {
       return (
         <CatPresentationalComponent
           url={url}
@@ -50,12 +53,12 @@ class CatComponent extends Component {
   };
 
   render() {
+    console.log(this.props.cat);
     const {
       showCat,
-      state: { cat }
+      props: { cat }
     } = this;
-    return <div></div>;
-    // return <Fragment>{showCat(cat)}</Fragment>;
+    return <Fragment>{showCat(cat)}</Fragment>;
   }
 }
 

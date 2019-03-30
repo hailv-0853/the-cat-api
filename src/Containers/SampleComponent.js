@@ -63,6 +63,8 @@ const mapStateToProps = store => {
     ...store.catStore,
     cats: []
   };
+
+  // Save data to localStorage in reducer
   localStorage.setItem("catStore", JSON.stringify(newCatStore));
   return store.catStore;
 };
