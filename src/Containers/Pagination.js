@@ -11,8 +11,8 @@ import {
 
 const createPaginationButtonArr = buttonToDisplay => (
   Array(buttonToDisplay)
-    .fill(0)
-    .map((value, index) => value + 2 + index)
+    .fill(2)
+    .map((value, index) => value + index)
 );
 
 let paginationButtonArr = [];

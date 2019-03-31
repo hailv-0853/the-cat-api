@@ -13,17 +13,6 @@ class CatComponent extends Component {
 
   componentDidMount() {
     const { dispatchFetchOneCat } = this.props;
-    // getOneCat(this.props.match.params.id)
-    //   .then(result => {
-    //     this.setState({
-    //       cat: result.data
-    //     });
-    //   })
-    //   .catch( () =>
-    //     this.setState({
-    //       isNotFound: !this.state.isNotFound
-    //     })
-    //   );
     const payload = this.props.match.params.id;
     dispatchFetchOneCat(payload);
   }
@@ -53,7 +42,6 @@ class CatComponent extends Component {
   };
 
   render() {
-    console.log(this.props.cat);
     const {
       showCat,
       props: { cat }
@@ -63,7 +51,6 @@ class CatComponent extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.catStore.cat);
   return {cat: state.catStore.cat};
 };
 
